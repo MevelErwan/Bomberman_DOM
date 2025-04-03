@@ -1,0 +1,374 @@
+/* Réinitialisation de base pour certains éléments */
+body, h1, h2, h3, p, div, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Police d'inspiration rétro et Arial comme police de secours */
+}
+
+body {
+    background-color: #2e2e2e; /* Fond sombre */
+    color: #f4f4f4; /* Texte clair */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../assets/images/home-page-bkg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    --color: #000;
+    --hover: #ff6347;
+}
+
+#app {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Styles pour le conteneur du lobby */
+#lobby-container {
+    width: 250px;
+    height: 200px; /* Hauteur adaptée pour 1 à 4 joueurs */
+    background-color: #1a1a1a;
+    border: 3px solid #f4f4f4;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 10px;
+    right: 10px; /* Positionné à droite pour le distinguer de la fenêtre de chat */
+    z-index: 1000;
+}
+
+#title-container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+
+#title-container #title {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+#main-container {
+    position: absolute;
+    height: 80%;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#main-container .button-container {
+    text-align: center;
+}
+
+#main-container .button-container #play-button {
+    color: var(--color);
+    transition: 0.25s;
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+}
+
+#main-container .button-container #play-button:hover, #main-container .button-container #play-button:focus {
+    border-color: var(--hover);
+    color: #fff;
+}
+
+#main-container .button-container .pulse-effect:hover,
+#main-container .button-container .pulse-effect:focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--hover);
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+}
+
+footer .text-center {
+    color: white;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#nickname-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-username {
+    padding: 10px 15px;
+    font-size: 14px; /* Taille de police légèrement réduite pour le style rétro */
+    background-color: #333;
+    color: #f4f4f4;
+    border: 2px solid #f4f4f4;
+    border-radius: 5px;
+    width: 250px;
+    margin-bottom: 10px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+#input-username:focus {
+    border-color: #ffcc00; /* Couleur d'accentuation jaune */
+    background-color: #444;
+}
+
+#submit-username {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #ffcc00; /* Couleur d'accentuation jaune */
+    color: #1a1a1a; /* Texte sombre pour contraster avec le fond jaune */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#submit-username:hover {
+    background-color: #e6b800; /* Jaune légèrement assombri au survol */
+    color: #2e2e2e;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Style du chat                               */
+/* -------------------------------------------------------------------------- */
+
+/* Conteneur principal du chat */
+#chat-container {
+    width: 250px; /* Réduction de la largeur */
+    height: 350px; /* Réduction de la hauteur */
+    background-color: #1a1a1a;
+    border: 3px solid #f4f4f4;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Position fixe par rapport à la fenêtre du navigateur */
+    bottom: 10px; /* Positionnement en bas avec une marge de 10px */
+    left: 10px; /* Positionnement à gauche avec une marge de 10px */
+    z-index: 1000; /* S'assurer que la boîte de chat est au-dessus des autres éléments */
+}
+
+/* En-tête du chat */
+#chat-header {
+    padding: 10px;
+    background-color: #2e2e2e; /* Fond légèrement différent pour l'en-tête */
+    text-align: center; /* Centrage du texte */
+    border-bottom: 2px solid #f4f4f4; /* Bordure inférieure pour séparer de la zone de messages */
+}
+
+/* Zone où les messages du chat seront affichés */
+#chat-messages {
+    flex: 1; /* Prend tout l'espace disponible */
+    padding: 10px;
+    overflow-y: auto; /* Barre de défilement si nécessaire */
+}
+
+/* Conteneur pour l'input et le bouton d'envoi */
+#chat-input-container {
+    display: flex; /* Organisation horizontale des éléments */
+    padding: 10px;
+    border-top: 2px solid #f4f4f4; /* Bordure supérieure pour séparer de la zone de messages */
+}
+
+/* Input pour taper le message */
+#chat-input {
+    flex: 1; /* Prend tout l'espace disponible à gauche du bouton */
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #333;
+    color: #f4f4f4; /* Texte clair */
+    border: 2px solid #f4f4f4; /* Bordure claire */
+    border-radius: 5px; /* Coins arrondis */
+    outline: none; /* Supprime le contour par défaut lors de la mise au point */
+    transition: border-color 0.3s, background-color 0.3s; /* Transition douce lors de la mise au point */
+}
+
+#chat-input:focus {
+    border-color: #ffcc00; /* Couleur d'accentuation jaune lors de la mise au point */
+    background-color: #444; /* Fond légèrement plus clair lors de la mise au point */
+}
+
+/* Bouton pour envoyer le message */
+#chat-send-button {
+    padding: 5px 10px;
+    margin-left: 10px; /* Espacement à gauche pour séparer de l'input */
+    font-size: 14px;
+    background-color: #ffcc00; /* Couleur d'accentuation jaune */
+    color: #1a1a1a; /* Texte sombre pour contraster avec le fond jaune */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s, color 0.3s; /* Transition douce au survol */
+}
+
+#chat-send-button:hover {
+    background-color: #e6b800; /* Jaune légèrement assombri au survol */
+    color: #2e2e2e; /* Texte légèrement plus clair au survol */
+}
+
+/* Styles pour les messages du chat */
+.chat-message {
+    margin-bottom: 10px; /* Espacement entre les messages */
+    font-size: 12px; /* Réduction de la taille du texte */
+}
+
+.chat-author {
+    font-weight: bold; /* Rendre le nom de l'auteur en gras */
+    margin-right: 5px; /* Espacement entre l'auteur et le message */
+    color: #ffcc00; /* Couleur d'accentuation jaune pour l'auteur */
+}
+
+/* Réduction de la taille du texte pour l'input et le bouton */
+#chat-input, #chat-send-button {
+    font-size: 12px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Lobby List                                 */
+/* -------------------------------------------------------------------------- */
+
+/* Styles pour le conteneur du lobby */
+#lobby-container {
+    width: 250px;
+    height: 200px; /* Hauteur adaptée pour 1 à 4 joueurs */
+    background-color: #1a1a1a;
+    border: 3px solid #f4f4f4;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 10px;
+    right: 10px; /* Positionné à droite pour le distinguer de la fenêtre de chat */
+    z-index: 1000;
+}
+
+/* En-tête du lobby */
+#lobby-header {
+    padding: 10px;
+    background-color: #2e2e2e;
+    text-align: center;
+    border-bottom: 2px solid #f4f4f4;
+    font-size: 12px; /* Taille de police réduite */
+}
+
+/* Liste des joueurs dans le lobby */
+#lobby-players {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 12px; /* Taille de police réduite */
+}
+
+.lobby-player {
+    margin-bottom: 10px;
+    color: #ffcc00; /* Couleur d'accentuation jaune pour les noms des joueurs */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Chrono                                    */
+/* -------------------------------------------------------------------------- */
+
+/* Conteneur principal du chrono */
+#chrono-container {
+    min-width: 150px; /* Largeur minimale pour le chrono */
+    max-width: 90%; /* Largeur maximale pour éviter que le chrono ne prenne toute la largeur de la fenêtre */
+    width: auto; /* La largeur s'ajuste en fonction du contenu */
+    height: auto; /* La hauteur s'ajuste en fonction du contenu */
+    padding: 10px; /* Ajout d'un padding pour l'espacement */
+    background-color: #1a1a1a;
+    border: 3px solid #f4f4f4;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 10px; /* Positionné en haut avec une marge de 10px */
+    left: 50%; /* Centrage horizontal */
+    transform: translateX(-50%); /* Ajustement pour un centrage parfait */
+    z-index: 1000;
+    text-align: center; /* Centrage du texte */
+}
+
+/* En-tête du chrono */
+#chrono-header {
+    padding: 10px;
+    background-color: #2e2e2e;
+    border-bottom: 2px solid #f4f4f4;
+    font-size: 12px; /* Taille de police réduite */
+}
+
+/* Affichage du temps du chrono */
+#chrono-time {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centrage horizontal du temps */
+    align-items: center; /* Centrage vertical du temps */
+    font-size: 20px; /* Taille de police plus grande pour le temps */
+    color: #ffcc00; /* Couleur d'accentuation jaune pour le temps */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                  Message d'Erreur : Username already used                  */
+/* -------------------------------------------------------------------------- */
+
+#error-username {
+    width: 300px; /* Largeur du conteneur d'erreur */
+    padding: 15px; /* Espacement intérieur pour le contenu */
+    background-color: #1a1a1a; /* Fond sombre pour correspondre au reste du design */
+    border: 3px solid #f4f4f4; /* Bordure claire pour le contraste */
+    border-radius: 8px; /* Coins arrondis */
+    text-align: center; /* Centrage du texte */
+    position: absolute; /* Positionnement absolu pour le placer où vous le souhaitez */
+    top: 10%; /* Positionnement à 10% du haut de la page */
+    left: 50%; /* Centrage horizontal */
+    transform: translateX(-50%); /* Ajustement pour un centrage horizontal parfait */
+    z-index: 1010; /* S'assurer que le message d'erreur est au-dessus des autres éléments */
+}
+
+#error-username h1 {
+    font-size: 18px; /* Taille de police pour le titre */
+    margin-bottom: 10px; /* Espacement entre le titre et le paragraphe d'information */
+    color: #ff6347; /* Couleur d'accentuation pour le titre */
+}
+
+#error-username p {
+    font-size: 14px; /* Taille de police pour le paragraphe d'information */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Player                                   */
+/* -------------------------------------------------------------------------- */
+
+.player {
+    z-index: 100;
+    position: absolute;
+    width: 5.5%; /* ou 5% selon votre préférence */
+    height: 5.5%; /* ou 5% selon votre préférence */
+    background-color: #3498db;
+    image-rendering: pixelated;
+}

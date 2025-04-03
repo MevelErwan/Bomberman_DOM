@@ -1,0 +1,76 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  /*background: url(./assets/image/home-page-bkg.jpg);*/
+  background: url(../assets/images/home-page-bkg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  --color: #000;
+  --hover: #ff6347;
+}
+#title-container {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+}
+#title-container #title {
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+#main-container {
+  position: absolute;
+  height: 80%;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#main-container .button-container {
+  text-align: center;
+}
+#main-container .button-container #play-button {
+  color: var(--color);
+  transition: 0.25s;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+#main-container .button-container #play-button:hover, #main-container .button-container #play-button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+#main-container .button-container .pulse-effect:hover,
+#main-container .button-container .pulse-effect:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+}
+footer .text-center {
+  color: white;
+  text-align: center;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=styles.css.map */
