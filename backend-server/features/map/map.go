@@ -61,7 +61,7 @@ func check(to_check string, typ [][]string) bool {
 }
 
 func prok() bool {
-	rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
 	rand := rand.Intn(3)
 	if rand < 2 {
 		return true
@@ -71,7 +71,7 @@ func prok() bool {
 }
 
 func power_or_not() int {
-	rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
 	rand := rand.Intn(15)
 	if rand <= 2 {
 		return rand
