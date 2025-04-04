@@ -17,13 +17,16 @@ Le but était de créer un jeux bomberman en multijoueur avec :
 
 
 
-![[./img/mainscreen.png]]
 
-![[./img/waitingscreen.png]]
 
-![[./img/mapexemple1.png]]
+![screenshot](img/mainscreen.png)
 
-![[./img/mapexemple2.png]]
+
+![screenshot](img/waitingscreen.png)
+
+![screenshot](img/mapexemple1.png)
+
+![screenshot](img/mapexemple2.png)
 
 
 Le projet a été réalisé avec l'aide de Thomas Thénard, Milevan PRSA et Yoann Letacq
